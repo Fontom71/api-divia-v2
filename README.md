@@ -2,17 +2,19 @@
 
 Version 2 (améliorée) de l'API Divia.
 
+Désormais l'api est entièrement faite en TypeScript et est plus facile à utiliser. Chaque ligne et chaque arrêt est maintenant un objet avec des méthodes pour les manipuler.
+
 Puisque [l'ancienne API de Keolis](http://timeo3.keolis.com/relais/217.php) n'est plus disponible, celle-ci utilise l'API du [site de Divia](https://www.divia.fr/bus-tram) qui renvoie un extrait de page HTML dans lequel se trouve les horaires des prochains passages.
 
 ## Importation de l'API :
 
 - Avec ESM :
   ```js
-  import ApiDivia from "api-divia";
+  import ApiDivia from "api-divia-v2";
   ```
 - Avec CommonJS :
   ```js
-  const ApiDivia = require("api-divia");
+  const ApiDivia = require("api-divia-v2");
   ```
 - Via un CDN :
   ```html
@@ -24,14 +26,13 @@ Puisque [l'ancienne API de Keolis](http://timeo3.keolis.com/relais/217.php) n'es
 Exemple :
 
 ```js
-const api = new DiviaAPI();
+const api = new ApiDivia();
+// Les données sont chargés dans le constructeur, mais vous pouvez les recharger avec :
+// await api.apiClient.fetchLinesAndStops();
 
 (async () => {
-  // Charge les données de Divia (https://bo-api.divia.fr/api/reseau/type/json) dans api.reseau :
-  await api.init();
-
   // Récupère la ligne :
-  const line = api.findLine("T1", "A");
+  const line = api.findLine("T1");
   // ou :
   const line = api.getLine("82");
 
@@ -40,10 +41,10 @@ const api = new DiviaAPI();
   // ou :
   const stop = line.getStop("1560");
   // ou directement :
-  const stop = api.findStop("T1", "République T1", "A");
+  const stop = api.findStop("T1");
 
   // Récupère les prochains passages :
-  console.log(await stop.totem());
+  console.log(await api.getStops());
 })();
 ```
 
@@ -53,7 +54,7 @@ Pour chaque Line ou Stop, vous pouvez récupérer les données fournies par Divi
 
 ## Fonctionnement
 
-L'API récupère dans un premier temps les données du réseau Divia à cette adresse : https://bo-api.divia.fr/api/reseau/type/json (méthode `api#init`) afin de pouvoir récupérer les identifiants et informations des lignes et arrêts. Vous pouvez donc si vous le souhaitez mettre en cache la variable JSON `api.reseau` afin d'éviter de refaire la requête à chaque démarrage de votre application.
+L'API récupère dans un premier temps les données du réseau Divia à cette adresse : https://bo-api.divia.fr/api/reseau/type/json afin de pouvoir récupérer les identifiants et informations des lignes et arrêts. Vous pouvez donc si vous le souhaitez mettre en cache la variable JSON `api.lines` et `api.stops` afin d'éviter de refaire la requête à chaque démarrage de votre application.
 
 Pour récupérer les prochains passages Totem, il faut faire une requête HTTP POST à cette adresse : https://www.divia.fr/bus-tram?type=479, avec le contenu application/x-www-form-urlencoded suivant :
 
