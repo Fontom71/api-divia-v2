@@ -1,15 +1,28 @@
 const path = require("path");
-  
+
 const config = {
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   target: "node",
   devtool: "source-map",
   node: { global: true },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, "src")],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "divia-api.js",
+    filename: "api-divia-v2.js",
     library: {
-      name: "DiviaAPI",
+      name: "ApiDivia",
       type: "umd",
     },
     globalObject: `typeof self !== 'undefined' ? self : this`,
@@ -23,7 +36,7 @@ const configMinimized = {
   ...config,
   output: {
     ...config.output,
-    filename: "divia-api.min.js",
+    filename: "api-divia-v2.min.js",
   },
   optimization: {
     minimize: true,

@@ -1,33 +1,35 @@
 {
-  "name": "divia-api",
-  "version": "2.2.5",
-  "description": "Dvia API v2",
-  "main": "dist/divia-api.min.js",
-  "module": "dist/divia-api.min.js",
+  "name": "api-divia-v2",
+  "version": "2.3.0",
+  "description": "API Divia v2",
+  "main": "dist/api-divia-v2.min.js",
+  "module": "dist/api-divia-v2.min.js",
   "scripts": {
-    "build": "webpack --mode=production",
-    "ts": "npx typescript src/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
-    "test": "mocha"
+    "build": "webpack --mode production",
+    "ts": "npx tsc src/index.ts --declaration --allowJs --emitDeclarationOnly --outDir types"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gauthier-th/divia-api.git"
+    "url": "git+https://github.com/Fontom71/api-divia-v2.git"
   },
   "keywords": [],
-  "author": "gauthier-th (mail@gauthierth.fr)",
+  "type": "module",
+  "author": "Fontom71",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gauthier-th/divia-api/issues"
+    "url": "https://github.com/Fontom71/api-divia-v2/issues"
   },
-  "homepage": "https://github.com/gauthier-th/divia-api#readme",
+  "homepage": "https://github.com/Fontom71/api-divia-v2#readme",
   "dependencies": {
-    "isomorphic-unfetch": "^3.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "jwt-decode": "^3.1.2"
+    "axios": "^1.7.2"
   },
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "typescript": "^4.2.3",
+    "@types/node": "^20.14.9",
+    "@types/webpack": "^5.28.5",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^4.9.5",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },

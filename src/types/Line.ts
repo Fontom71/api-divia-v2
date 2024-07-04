@@ -1,0 +1,56 @@
+import Service from "./Service";
+import Desserte from "./Desserte";
+import Pole from "./Pole";
+import Commune from "./Commune";
+import Stop from "./Stop";
+
+export default interface Line {
+  id: string;
+  codetotem: string;
+  senstotem: string;
+  nom: string;
+  nom_commercial: string;
+  direction: string;
+  directionar: string;
+  favori: boolean;
+  type: string;
+  deleted: boolean;
+  sorting: string;
+  service: Service;
+  fonctionnement: string;
+  fonctionnement_en: string;
+  jours_circulation: string;
+  jours_circulation_en: string;
+  frequences_journee_semaine: string;
+  frequences_journee_semaine_en: string;
+  amplitude_horaires_semaine: string;
+  amplitude_horaires_semaine_en: string;
+  frequences_journee_samedi: string;
+  frequences_journee_samedi_en: string;
+  amplitude_horaires_samedi: string;
+  amplitude_horaires_samedi_en: string;
+  frequences_journee_dimanche: string;
+  frequences_journee_dimanche_en: string;
+  amplitude_horaires_dimanche: string;
+  amplitude_horaires_dimanche_en: string;
+  premiers_departs: string;
+  derniers_departs: string;
+  dessertes: Desserte[];
+  poles: Pole[];
+  communes: Commune[];
+  nombre_stations: string;
+  longueur: string;
+  fichier_thermometre: string;
+  fichier_thermometre_pdf: string;
+  descriptif_thermometre: string;
+  descriptif_thermometre_en: string;
+  trace: string;
+  picto: string;
+  arrets_flux: null;
+  couleur: string;
+  tad: boolean;
+  arrets: { [key: string]: Stop };
+  count: {
+    arrets: number;
+  };
+}
