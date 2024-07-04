@@ -1,12 +1,17 @@
 {
   "name": "api-divia-v2",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "API Divia v2",
-  "main": "dist/api-divia-v2.min.js",
-  "module": "dist/api-divia-v2.min.js",
+  "main": "dist/index.js",
+  "module": "dist/browser/api-divia-v2.min.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "webpack --mode production",
-    "ts": "npx tsc src/index.ts --declaration --allowJs --emitDeclarationOnly --outDir types"
+    "ts": "npx tsc",
+    "tsup": "npx tsup"
   },
   "repository": {
     "type": "git",
@@ -24,14 +29,10 @@
     "axios": "^1.7.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.9",
-    "@types/webpack": "^5.28.5",
     "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
+    "tsup": "^8.1.0",
     "typescript": "^4.9.5",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
-  },
-  "types": "types/index.d.ts"
+  }
 }

@@ -19,7 +19,7 @@ const config = {
     extensions: [".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist/browser"),
     filename: "api-divia-v2.js",
     library: {
       name: "ApiDivia",

@@ -40,6 +40,11 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+src/
+
+tsconfig.json
+tsup.config.ts
+webpack.config.cjs
 
 # TypeScript v1 declaration files
 typings/
